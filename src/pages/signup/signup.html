@@ -11,25 +11,26 @@
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
     <ion-item>
       <ion-label stacked>Name</ion-label>
-      <ion-input formControlName="name" type="text" placeholder="Your name" [class.invalid]="!signupForm.controls.name.valid && blur"></ion-input>
+      <ion-input formControlName="name" type="text" placeholder="Your name" [class.invalid]="!signupForm.controls.name.valid && signupForm.controls.name.touched"></ion-input>
     </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.name.valid && signupForm.controls.name.dirty">
+    <ion-item class="error-message" *ngIf="!signupForm.controls.name.valid && signupForm.controls.name.touched">
       <p>Password should be of or more than 6 characters.</p>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email" placeholder="Your email address" [class.invalid]="!signupForm.controls.email.valid && blur" ></ion-input>
+      <ion-input formControlName="email" type="email" placeholder="Your email address"
+        [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.touched"></ion-input>
     </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid && signupForm.controls.email.dirty">
+    <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid && signupForm.controls.email.touched">
       <p>Please enter a valid email address.</p>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Password</ion-label>
-      <ion-input formControlName="password" type="password" placeholder="Password" [class.invalid]="!signupForm.controls.password.valid && blur"></ion-input>
+      <ion-input formControlName="password" type="password" placeholder="Password" [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.touched"></ion-input>
     </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid && signupForm.controls.password.dirty">
+    <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid && signupForm.controls.password.touched">
       <p>Password should be of or more than 6 characters.</p>
     </ion-item>
 
