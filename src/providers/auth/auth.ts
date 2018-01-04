@@ -13,9 +13,12 @@ export class AuthProvider {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
-  signupUser(email: string, password: string): Promise<any> {
+  signupUser(name:string, email: string, password: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password).then(newUser => {
-      firebase.database().ref(`/userProfile/${newUser.uid}/email`).set(email);
+      firebase.database().ref(`/userProfile/${newUser.uid}`).set({
+        displayName: name,
+        email: email,
+      });
     }).catch(error => {
       console.error(error);
       throw new Error(error);

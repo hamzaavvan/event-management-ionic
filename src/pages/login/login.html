@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Login</ion-title>
   </ion-navbar>
 
@@ -26,15 +26,17 @@
       <p>Incorrect password.</p>
     </ion-item>
 
-    <button ion-button block clear text-center type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button ion-button block color="secondary" text-center type="submit" [disabled]="!loginForm.valid">Login</button>
 
   </form>
 
-  <button ion-item block clear text-center (click)="gotoSignup()">
-    Create a new account
-  </button>
+  <ion-buttons>
+    <button ion-item block color="primary" text-center (click)="gotoSignup()">
+      Create a new account
+    </button>
 
-  <button ion-item block clear text-center (click)="gotoResetPassword()">
-    I forgot my password
-  </button>
+    <button ion-item block clear color="danger" text-center (click)="gotoResetPassword()">
+      I forgot my password
+    </button>
+  </ion-buttons>
 </ion-content>

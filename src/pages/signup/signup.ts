@@ -18,6 +18,9 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public authProvider: AuthProvider, formBuilder: FormBuilder) {
       this.signupForm = formBuilder.group({
+        "name": [
+          '', Validators.compose([Validators.required, Validators.maxLength(15)])
+        ],
         "email": [
           '', Validators.compose([Validators.required, EmailValidator.isValid])
         ],
@@ -37,10 +40,11 @@ export class SignupPage {
         `Need to complete the form, current value: ${this.signupForm.value}`
         );
     } else {
+      const name: string = this.signupForm.value.name;
       const email: string = this.signupForm.value.email;
       const password: string = this.signupForm.value.password;
 
-      this.authProvider.signupUser(email, password).then(user => {
+      this.authProvider.signupUser(name, email, password).then(user => {
         this.loading.dismiss().then(() => {
           this.navCtrl.setRoot(HomePage);
         });
@@ -55,7 +59,7 @@ export class SignupPage {
         });
       });
 
-      this.loading = this.loadingCtrl.create();
+      this.loading = this.loadingCtrl.create({content: "Signing Up"});
       this.loading.present();
     }
   }

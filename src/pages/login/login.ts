@@ -59,12 +59,11 @@ export class LoginPage {
           buttons: [{text: 'Ok', role: 'cancel'}]
         });
 
-        alert.present();
-
         this.loading.dismiss();
+        alert.present();
       });
 
-      this.loading = this.loadingCtrl.create();
+      this.loading = this.loadingCtrl.create({content: "Logging In"});
       this.loading.present();
     }
   }

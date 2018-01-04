@@ -1,14 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="gotoProfile()">
+        <ion-icon name="person"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <p *ngIf="user?.displayName">Welcome, {{user?.displayName}} !</p>
+
+  <button ion-button block (click)="signoutUser()">Logout</button>
 </ion-content>

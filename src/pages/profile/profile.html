@@ -1,18 +1,56 @@
-<!--
-  Generated template for the ProfilePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
     <ion-title>Profile</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-list-header>Personal Information <ion-badge>Me</ion-badge></ion-list-header>
 
+    <ion-item (click)="updateName()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>Name</ion-col>
+          <ion-col col-6 *ngIf="userProfile?.displayName">{{ userProfile.displayName }}</ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.displayName">
+            <span>Tap here to edit.</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item>
+      <ion-label col-6 class="dob-label">Date of Birth</ion-label>
+      <ion-datetime displayFormat="MMM D, YYYY" pickerFormat="D MMM YYYY" [(ngModel)]="birthDate" (ionChange)="updateDOB(birthDate)" placeholder="Tap to select"></ion-datetime>
+    </ion-item>
+
+    <ion-item (click)="updateEmail()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>Email</ion-col>
+          <ion-col col-6 *ngIf="userProfile?.email">{{ userProfile?.email }}</ion-col>
+          <ion-col class="placeholder-profile" *ngIf="!userProfile?.email">Tap here to update</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item (click)="updatePassword()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>Password</ion-col>
+          <ion-col class="placeholder-profile" col-6>Tap here to update</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>
