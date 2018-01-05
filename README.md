@@ -15,5 +15,5 @@ Event management app on ionic
 ### Android
 [![Event Management App](https://github.com/hamzaavvan/event-management-ionic/blob/master/screenshots/1-c.JPG)]
 
-# Windows
+### Windows
 [![Event Management App](https://github.com/hamzaavvan/event-management-ionic/blob/master/screenshots/1-b.JPG)]
