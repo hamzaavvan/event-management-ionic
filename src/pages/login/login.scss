@@ -39,4 +39,10 @@ page-login {
             border-bottom: 0 !important;
         }
     }
+
+    .scroll-content {
+        background-image: url("/assets/imgs/login-bg.jpg");
+        background-size: cover;
+        background-position: center center;
+    }
 }

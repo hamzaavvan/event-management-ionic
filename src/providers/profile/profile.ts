@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import firebase from 'firebase';
-import { Reference } from '@firebase/database-types';
-import { User, AuthCredential } from '@firebase/auth-types';
+import { Reference } from '@firebase/database';
+import { User, AuthCredential } from 'firebase/database';
 
 @Injectable()
 export class ProfileProvider {
-  public userProfile: Reference;
+  public userProfile: firebase.database.Reference;
   public currentUser: User;
 
   constructor() {
@@ -18,7 +18,7 @@ export class ProfileProvider {
     });
   }
 
-  getUserProfile(): Reference {
+  getUserProfile(): firebase.database.Reference {
     return this.userProfile;
   }
 

@@ -36,4 +36,10 @@ page-signup {
             border-bottom: 0 !important;
         }
     }
+
+    .scroll-content {
+        background-image: url("/assets/imgs/register-bg.jpg");
+        background-size: cover;
+        background-position: center center;
+    }
 }

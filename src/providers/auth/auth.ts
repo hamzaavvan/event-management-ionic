@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import firebase from 'firebase';
-import { User } from '@firebase/auth-types';
 
 @Injectable()
 export class AuthProvider {
@@ -9,7 +8,7 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
 
-  loginUser(email: string, password: string): Promise<User> {
+  loginUser(email: string, password: string): Promise<any> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 

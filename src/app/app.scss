@@ -44,4 +44,12 @@ page-home, page-login, page-reset-password, page-signup {
     form {
         margin-top: 5vh;
     }
+
+    form, form ion-item {
+        background-color: transparent !important;
+
+        &, ion-label * {
+            color: #fff !important;
+        }
+    }
 }
