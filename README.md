@@ -1,5 +1,5 @@
 # Event Management App @Ionic
-Event management app on ionic
+Event management app on **ionic** <img src="https://abs.twimg.com/emoji/v2/72x72/1f680.png" width="17" height="17">
 
 1. Ionic
 2. Firebase Database
