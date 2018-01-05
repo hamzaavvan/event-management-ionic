@@ -62,7 +62,7 @@ export class ResetPasswordPage {
         errorAlert.present();
       });
 
-      this.loading = this.loadingCtrl.create();
+      this.loading = this.loadingCtrl.create({content: "Sending reset link !"});
       this.loading.present();
     }
   }

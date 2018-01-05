@@ -16,7 +16,7 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    statusBar: StatusBar,
+    private statusBar: StatusBar,
     splashScreen: SplashScreen
   ) {
     firebase.initializeApp(firebaseConfig);
@@ -30,13 +30,14 @@ export class MyApp {
         unsubscribe();
       }
     });
+    
 
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      // statusBar.styleDefault();
-      statusBar.overlaysWebView(true);
       statusBar.backgroundColorByHexString('#2196F3');
+      this.statusBar.overlaysWebView(true);
+
+      // set status bar to white
+
       splashScreen.hide();
     });
   }

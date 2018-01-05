@@ -41,8 +41,9 @@ page-login {
     }
 
     .scroll-content {
-        background-image: url("/assets/imgs/login-bg.jpg");
+        background-image: url('../assets/imgs/login-bg.jpg');
         background-size: cover;
         background-position: center center;
+        background-repeat: no-repeat;
     }
 }
