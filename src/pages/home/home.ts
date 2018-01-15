@@ -40,4 +40,12 @@ export class HomePage {
   gotoProfile():void {
     this.navCtrl.push("ProfilePage");
   }
+
+  goToCreate(): void {
+    this.navCtrl.push('EventCreatePage');
+  }
+
+  gotoList(): void {
+    this.navCtrl.push('EventListPage');
+  }
 }

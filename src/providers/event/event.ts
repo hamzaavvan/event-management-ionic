@@ -1,17 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/*
-  Generated class for the EventProvider provider.
+import firebase from 'firebase';
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class EventProvider {
+  public eventListRef: firebase.database.Reference;
 
   constructor(public http: HttpClient) {
-    console.log('Hello EventProvider Provider');
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.eventListRef = firebase.database()
+        .ref(`/userProfile/${user.uid}/eventList`);
+      } 
+    }); 
   }
 
+  createEvent(name: string, date: string, price: number, cost: number): firebase.database.ThenableReference {
+    return this.eventListRef.push({
+      name, date, price: price*1, cost: cost*1, revenue: cost*1
+    });
+  }
+
+  getEventList(): firebase.database.Reference {
+    return this.eventListRef;
+  }
+
+  getEventDetial(id: string): firebase.database.Reference {
+    return this.eventListRef.child(id);
+  }
 }
