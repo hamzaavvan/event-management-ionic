@@ -1,5 +1,5 @@
 # Event Management App @Ionic
-Event management app on <img src="http://blog.pdsullivan.com/assets/ionic-logo.png" width="50" height="17">
+Event management app on <img src="http://blog.pdsullivan.com/assets/ionic-logo.png" width="50" height="18">
 
 1. Ionic
 2. Firebase Database
