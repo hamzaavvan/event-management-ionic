@@ -1,18 +1,44 @@
-<!--
-  Generated template for the EventCreatePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>EventCreate</ion-title>
+    <ion-title>New Event</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-label stacked>Event Name</ion-label>
+    <ion-input [(ngModel)]="eventName" type="text" placeholder="What's your event's name?"></ion-input>
+  </ion-item>
 
+  <ion-item>
+    <ion-label stacked>Price</ion-label>
+    <ion-input [(ngModel)]="eventPrice" type="number" placeholder="How much will guests pay?"></ion-input>
+
+    <ion-range min="20" max="10000" step="1" [(ngModel)]="eventPrice">
+      <ion-label range-left>20</ion-label>
+      <ion-label range-right>10000</ion-label>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Cost</ion-label>
+    <ion-input [(ngModel)]="eventCost" type="number" placeholder="How much you're spending?"></ion-input>
+
+    <ion-range min="20" max="10000" step="1" [(ngModel)]="eventCost">
+      <ion-label range-left>20</ion-label>
+      <ion-label range-right>10000</ion-label>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Event Date</ion-label>
+    <ion-datetime placeholder="Choose date" [(ngModel)]="eventDate" displayFormat="D MMM, YY" pickerFormat="DD MMM YYYY"></ion-datetime>
+  </ion-item>
+
+  <button ion-button block (click)="createEvent(eventName, eventDate, eventPrice, eventCost)">
+    Create Event
+  </button>
 </ion-content>

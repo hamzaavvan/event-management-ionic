@@ -1,18 +1,27 @@
-<!--
-  Generated template for the EventListPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>EventList</ion-title>
+    <ion-title>View Events</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <div text-center class="loading" *ngIf="loading">
+    <ion-spinner name="bubbles"></ion-spinner>
+    <p>Loading</p>
+  </div>
 
+  <div *ngIf="!eventList?.length && !loading">
+    <p>No Events Found</p>
+  </div>
+  
+  <ion-list *ngIf="eventList?.length">
+    <ion-item *ngFor="let event of eventList" (click)="goToEventDetail(event.id)">
+      <h2>{{ event?.name }}</h2>
+      <p>Ticket: <strong>${{event?.price}}</strong></p>
+      <p>Date: <strong>{{event?.date}}</strong></p>
+    </ion-item>
+  </ion-list>
 </ion-content>
