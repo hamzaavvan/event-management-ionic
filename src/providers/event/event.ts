@@ -25,17 +25,30 @@ export class EventProvider {
     return this.eventListRef;
   }
 
-  getEventDetial(id: string): firebase.database.Reference {
+  getEventDetail(id: string): firebase.database.Reference {
     return this.eventListRef.child(id);
   }
 
-  addGuest(guestName: string, eventId: string, eventPrice: number): PromiseLike<any> {
+  getEventGuest(eventId: string): firebase.database.Reference {
+    return this.eventListRef.child(`${eventId}/guestList`);
+  }
+
+  addGuest(guestName: string, eventId: string, eventPrice: number, guestPicture: string = null): PromiseLike<any> {
     return this.eventListRef.child(`${eventId}/guestList`).push({guestName})
     .then(newGuest => {
       this.eventListRef.child(eventId).transaction(event => {
         event.revenue += eventPrice;
         return event;
       });
+
+      if (guestPicture != null) {
+        firebase.storage().ref(`/guestProfile/${newGuest.key}/profilePicture`)
+        .putString(guestPicture, 'base64', {contentType: 'image/png'})
+        .then(savedPicture => {
+          this.eventListRef.child(`${eventId}/guestList/${newGuest.key}/profilePicture`)
+          .set(savedPicture.downloadURL);
+        });
+      }
     });
   }
 }

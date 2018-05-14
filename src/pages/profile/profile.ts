@@ -126,7 +126,10 @@ export class ProfilePage {
         {
           text: "Save",
           handler: (data) => {
-            this.profileProvider.updatePassword(data.newpassword, data.oldpassword);
+            this.loading = this.loadingCtrl.create({content: "Updating Password"});
+            this.loading.present();
+
+            this.profileProvider.updatePassword(data.newpassword, data.oldpassword, this.loading);
           }
         },
         {

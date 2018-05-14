@@ -3,6 +3,6 @@ export const firebaseConfig = {
     authDomain: "event-manage-ionic.firebaseapp.com",
     databaseURL: "https://event-manage-ionic.firebaseio.com",
     projectId: "event-manage-ionic",
-    storageBucket: "",
+    storageBucket: "event-manage-ionic.appspot.com",
     messagingSenderId: "760529605309"
 };

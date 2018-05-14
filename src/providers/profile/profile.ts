@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IonicPage, NavController, AlertController, Alert, Loading, LoadingController } from 'ionic-angular';
 
 import firebase from 'firebase';
 import { Reference } from '@firebase/database';
@@ -8,8 +9,9 @@ import { User, AuthCredential } from 'firebase/database';
 export class ProfileProvider {
   public userProfile: firebase.database.Reference;
   public currentUser: User;
+  public alert: Alert;
 
-  constructor() {
+  constructor(public loadingCtrl : LoadingController, public alertCtrl: AlertController) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.currentUser = user;
@@ -48,7 +50,7 @@ export class ProfileProvider {
       });
   }
 
-  updatePassword(newPassword: string, oldPassword: string): Promise<any> {
+  updatePassword(newPassword: string, oldPassword: string, loading: Loading): Promise<any> {
     const credentials: AuthCredential = firebase.auth.EmailAuthProvider.credential(
       this.currentUser.email,
       oldPassword
@@ -58,11 +60,15 @@ export class ProfileProvider {
       .reauthenticateWithCredential(credentials)
       .then(user => {
         this.currentUser.updatePassword(newPassword).then(user => {
-          console.log('Password changed');
+          this.alert = this.alertCtrl.create({message: "Password changed"});
+          this.alert.present();
+          loading.dismiss();
         });
       })
       .catch(error => {
-        console.error(error);
+        this.alert = this.alertCtrl.create({message: error});
+        this.alert.present();
+        loading.dismiss();
       });
   }
 }

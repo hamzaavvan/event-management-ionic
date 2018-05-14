@@ -19,23 +19,24 @@ export class EventListPage {
     this.loading = true;
     let eventList = this.eventProvider.getEventList();
 
-    if (eventList) {
-      eventList.on("value", eventsList => {
-        this.eventList = [];
+    eventList.on("value", eventsList => {
+      this.eventList = [];
+      
+      console.log(eventsList)
 
-        eventsList.forEach(event => {
-          this.eventList.push({
-            id: event.key,
-            name: event.val().name,
-            price: event.val().price,
-            date: event.val().date
-          });
-
-        this.loading = false;
-        return false;
+      eventsList.forEach(event => {
+        this.eventList.push({
+          id: event.key,
+          name: event.val().name,
+          price: event.val().price,
+          date: event.val().date
         });
+
+        return false;
       });
-    }
+      
+      this.loading = false;
+    });
   }
 
   goToEventDetail(eventId): void {
